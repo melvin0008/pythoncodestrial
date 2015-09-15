@@ -18,8 +18,8 @@ def centrality_max(G, node):
                 marked[neighbor]=True
                 arr.append(neighbor)
         arr.pop(0)
-    # return max(distance_from_node.iteritems(),key=operator.itemgetter(1))[0]
-    return distance_from_node
+    return max(distance_from_node.iteritems(),key=operator.itemgetter(1))[1]
+    # return distance_from_node
 
 
 #################
@@ -35,12 +35,12 @@ def make_link(G, node1, node2):
     return G
 
 def test():
-    # chain = ((1,2), (2,3), (3,4), (4,5), (5,6))
-    # G = {}
-    # for n1, n2 in chain:
-    #     make_link(G, n1, n2)
-    # assert centrality_max(G, 1) == 5
-    # assert centrality_max(G, 3) == 3
+    chain = ((1,2), (2,3), (3,4), (4,5), (5,6))
+    G = {}
+    for n1, n2 in chain:
+        make_link(G, n1, n2)
+    assert centrality_max(G, 1) == 5
+    assert centrality_max(G, 3) == 3
     tree = ((1, 2), (1, 3),
             (2, 4), (2, 5),
             (3, 6), (3, 7),
@@ -49,8 +49,8 @@ def test():
     G = {}
     for n1, n2 in tree:
         make_link(G, n1, n2)
-    print centrality_max(G,11)
-    # assert centrality_max(G, 1) == 3
-    # assert centrality_max(G, 11) == 6
+    # print centrality_max(G,11)
+    assert centrality_max(G, 1) == 3
+    assert centrality_max(G, 11) == 6
 
 test()
